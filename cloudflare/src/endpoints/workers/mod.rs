@@ -12,13 +12,18 @@ mod delete_script;
 mod delete_secret;
 mod delete_tail;
 mod do_tests;
+mod get_script;
 mod list_bindings;
 mod list_do_namespaces;
 mod list_do_objects;
 mod list_routes;
+mod list_scripts;
 mod list_secrets;
 mod list_tails;
+mod script_data_structures;
+mod script_tests;
 mod send_tail_heartbeat;
+mod upload_script;
 
 pub use create_route::{CreateRoute, CreateRouteParams};
 pub use create_secret::{CreateSecret, CreateSecretParams};
@@ -28,6 +33,7 @@ pub use delete_route::DeleteRoute;
 pub use delete_script::DeleteScript;
 pub use delete_secret::DeleteSecret;
 pub use delete_tail::DeleteTail;
+pub use get_script::GetWorkerScript;
 pub use list_bindings::ListBindings;
 pub use list_do_namespaces::{DurableObjectNamespace, ListDurableObjectNamespaces};
 pub use list_do_objects::{
@@ -35,9 +41,16 @@ pub use list_do_objects::{
     ListDurableObjectsResponse,
 };
 pub use list_routes::ListRoutes;
+pub use list_scripts::ListWorkerScripts;
 pub use list_secrets::ListSecrets;
 pub use list_tails::ListTails;
+pub use script_data_structures::{
+    ListWorkersResponse, WorkerBinding, WorkerModule, WorkerObservability, WorkerPlacement,
+    WorkerScript, WorkerScriptContent, WorkerScriptMetadata, WorkerScriptResponse,
+    WorkerScriptUploadRequest, WorkerTailConsumer, WorkerUsageModel,
+};
 pub use send_tail_heartbeat::SendTailHeartbeat;
+pub use upload_script::{UploadWorkerScript, UploadWorkerScriptJson};
 
 /// Workers KV Route
 /// Routes are basic patterns used to enable or disable workers that match requests.
