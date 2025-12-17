@@ -88,6 +88,64 @@ This fork extends the official cloudflare-rs crate with comprehensive support fo
 - `DELETE /accounts/{account_id}/queues/{queue_id}/messages` - Purge queue
 - `GET /accounts/{account_id}/queues/{queue_id}/purge/status` - Get purge status
 
+#### [v0.14.1+] Page Rules Management
+**Added**: Complete Page Rules configuration and management
+- **URL Pattern Matching**: Wildcard, exact, and contains operators
+- **Action Management**: 20+ action types (cache, security, redirects, etc.)
+- **Priority Control**: Rule ordering and status management
+- **Filter Support**: Status, order, direction, and match type filtering
+
+**Endpoints Added**:
+- `GET /zones/{zone_id}/pagerules` - List page rules with filtering
+- `GET /zones/{zone_id}/pagerules/{rule_id}` - Get page rule details
+- `POST /zones/{zone_id}/pagerules` - Create page rule
+- `PUT /zones/{zone_id}/pagerules/{rule_id}` - Update page rule (full)
+- `PATCH /zones/{zone_id}/pagerules/{rule_id}` - Edit page rule (partial)
+- `DELETE /zones/{zone_id}/pagerules/{rule_id}` - Delete page rule
+
+#### [v0.14.1+] SSL Certificate Management
+**Added**: Origin CA Certificate management and SSL settings
+- **Certificate Lifecycle**: Create, list, retrieve, and revoke certificates
+- **Certificate Types**: RSA, ECC, and Keyless certificate support
+- **Validity Control**: Customizable certificate validity periods
+- **Zone SSL Settings**: SSL mode configuration (Off, Flexible, Full, Strict)
+
+**Endpoints Added**:
+- `GET /certificates` - List Origin CA certificates
+- `GET /certificates/{certificate_id}` - Get certificate details
+- `POST /certificates` - Create Origin CA certificate
+- `DELETE /certificates/{certificate_id}` - Revoke certificate
+- `GET /zones/{zone_id}/settings/ssl` - Get SSL settings
+- `PATCH /zones/{zone_id}/settings/ssl` - Update SSL settings
+
+#### [v0.14.1+] Cloudflare Access (Zero Trust) Management
+**Added**: Complete Zero Trust Access management
+- **Application Management**: Self-hosted, SSH, VNC, SaaS, and Bookmark applications
+- **Policy Management**: Allow, Deny, Bypass, and Non-Identity policies
+- **User Management**: User sessions, authentication history, and access control
+- **Service Tokens**: API authentication and token rotation
+- **Rule Engine**: 11 rule types including email, IP, country, groups, and identity providers
+
+**Endpoints Added**:
+- `GET /accounts/{account_id}/access/apps` - List Access applications
+- `GET /accounts/{account_id}/access/apps/{app_id}` - Get application
+- `POST /accounts/{account_id}/access/apps` - Create application
+- `PUT /accounts/{account_id}/access/apps/{app_id}` - Update application
+- `DELETE /accounts/{account_id}/access/apps/{app_id}` - Delete application
+- `GET /accounts/{account_id}/access/policies` - List policies
+- `GET /accounts/{account_id}/access/policies/{policy_id}` - Get policy
+- `POST /accounts/{account_id}/access/policies` - Create policy
+- `PUT /accounts/{account_id}/access/policies/{policy_id}` - Update policy
+- `DELETE /accounts/{account_id}/access/policies/{policy_id}` - Delete policy
+- `GET /accounts/{account_id}/access/users` - List Access users
+- `GET /accounts/{account_id}/access/users/{user_id}` - Get user details
+- `POST /accounts/{account_id}/access/users/{user_id}/revoke_sessions` - Revoke sessions
+- `GET /accounts/{account_id}/access/service_tokens` - List service tokens
+- `POST /accounts/{account_id}/access/service_tokens` - Create service token
+- `PUT /accounts/{account_id}/access/service_tokens/{token_id}` - Update service token
+- `DELETE /accounts/{account_id}/access/service_tokens/{token_id}` - Delete service token
+- `POST /accounts/{account_id}/access/service_tokens/{token_id}/rotate` - Rotate token
+
 ### 🛠️ Implementation Details
 
 #### Architecture Patterns
@@ -132,6 +190,20 @@ This fork enables comprehensive Cloudflare service management:
 All enhancements follow Single Responsibility Principle (SRP) with focused commits:
 
 ```
+e28ea87 feat: expose new API modules in main endpoints module
+bbe8ac8 feat: add module definitions for new API endpoints
+2311541 test: add comprehensive test coverage for new APIs
+df36533 feat: implement Cloudflare Access service token management
+b20f382 feat: implement Cloudflare Access user management
+80183df feat: implement Cloudflare Access policy management
+eb021c5 feat: implement Cloudflare Access application management
+d447eda feat: add Cloudflare Access data structures and types
+ab1e47e feat: implement SSL Certificate management endpoints
+16288af feat: add SSL Certificate data structures and types
+90ce927 feat: implement Page Rules management endpoints
+c21643a feat: add Page Rules data structures and types
+5c04b3d docs: add comprehensive CHANGELOG documenting fork enhancements
+467abe9 test: add multipart support test for blocking API client
 4e80f0b feat: expose Cloudflare Queues module in public API
 908e6b1 test: add comprehensive test coverage for Cloudflare Queues  
 0da88db feat: implement Cloudflare Queues operational endpoints
