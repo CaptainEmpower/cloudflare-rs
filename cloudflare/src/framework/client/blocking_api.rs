@@ -168,3 +168,79 @@ where
         Err(ApiFailure::Error(status, errors))
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::framework::endpoint::{MultipartBody, MultipartPart};
+    use crate::framework::response::ApiSuccess;
+    use crate::framework::Environment;
+    use serde_json::json;
+
+    //region Endpoint that sends a multipart request.
+    #[derive(Debug)]
+    struct DummyMultipartEndpoint;
+
+    impl EndpointSpec for DummyMultipartEndpoint {
+        type JsonResponse = ();
+        type ResponseType = ApiSuccess<Self::JsonResponse>;
+
+        fn method(&self) -> reqwest::Method {
+            reqwest::Method::POST
+        }
+
+        fn path(&self) -> String {
+            "/dummy/multipart".into()
+        }
+
+        fn body(&self) -> Option<RequestBody> {
+            Some(RequestBody::MultiPart(&DummyMultipart))
+        }
+    }
+
+    struct DummyMultipart;
+
+    impl MultipartBody for DummyMultipart {
+        fn parts(&self) -> Vec<(String, MultipartPart)> {
+            vec![("key".into(), MultipartPart::Text("value".into()))]
+        }
+    }
+    //endregion
+
+    #[cfg(feature = "mockito")]
+    fn create_test_client(url: String) -> HttpApiClient {
+        let environment = Environment::Custom(url);
+        let credentials = Credentials::UserAuthToken {
+            token: "test_token".to_string(),
+        };
+        let config = ClientConfig::default();
+        HttpApiClient::new(credentials, config, environment).unwrap()
+    }
+
+    /// Test that the blocking client can successfully send a multipart request.
+    #[cfg(feature = "mockito")]
+    #[test]
+    fn test_multipart_body_success() {
+        let body = json!({
+            "result": null,
+            "result_info": null,
+            "success": true,
+            "errors": [],
+            "messages": []
+        });
+
+        let mut server = mockito::Server::new();
+        let mock = server
+            .mock("POST", "/dummy/multipart")
+            .with_status(200)
+            .with_header("content-type", "application/json")
+            .with_body(body.to_string())
+            .create();
+
+        let client = create_test_client(server.url());
+        let result = client.request(&DummyMultipartEndpoint);
+
+        mock.assert();
+        assert!(result.is_ok());
+    }
+}
