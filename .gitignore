@@ -2,6 +2,7 @@ target
 */target
 **/*.rs.bk
 Cargo.lock
+**/tmp
 *.swp
 tags
 rusty-tags.vi
