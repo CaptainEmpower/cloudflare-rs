@@ -11,7 +11,10 @@ mod delete_route;
 mod delete_script;
 mod delete_secret;
 mod delete_tail;
+mod do_tests;
 mod list_bindings;
+mod list_do_namespaces;
+mod list_do_objects;
 mod list_routes;
 mod list_secrets;
 mod list_tails;
@@ -26,6 +29,11 @@ pub use delete_script::DeleteScript;
 pub use delete_secret::DeleteSecret;
 pub use delete_tail::DeleteTail;
 pub use list_bindings::ListBindings;
+pub use list_do_namespaces::{DurableObjectNamespace, ListDurableObjectNamespaces};
+pub use list_do_objects::{
+    DurableObjectInfo, DurableObjectsResultInfo, ListDurableObjectsInNamespace,
+    ListDurableObjectsResponse,
+};
 pub use list_routes::ListRoutes;
 pub use list_secrets::ListSecrets;
 pub use list_tails::ListTails;
