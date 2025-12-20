@@ -6,7 +6,7 @@ use url::Url;
 
 pub use http::Method;
 
-pub(crate) use spec::EndpointSpec;
+pub use spec::EndpointSpec;
 
 pub enum RequestBody<'a> {
     Json(String),
