@@ -102,7 +102,7 @@ impl EndpointSpec for CreateBucket<'_> {
         format!("accounts/{}/r2/buckets", self.account_identifier)
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))
@@ -163,7 +163,7 @@ impl EndpointSpec for UpdateBucket<'_> {
         )
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))

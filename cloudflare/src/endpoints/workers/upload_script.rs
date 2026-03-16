@@ -34,7 +34,7 @@ impl EndpointSpec for UploadWorkerScript<'_> {
         )
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::MultiPart(self))
     }
 }
@@ -99,7 +99,7 @@ impl EndpointSpec for UploadWorkerScriptJson<'_> {
         )
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         use super::script_data_structures::{WorkerModuleUpload, WorkerScriptUploadRequest};
 
         let modules = if self.modules.is_empty() {

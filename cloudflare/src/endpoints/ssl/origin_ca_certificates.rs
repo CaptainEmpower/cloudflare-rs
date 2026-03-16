@@ -74,7 +74,7 @@ impl EndpointSpec for CreateOriginCaCertificate {
         "certificates".to_string()
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))
@@ -145,7 +145,7 @@ impl EndpointSpec for UpdateZoneSslSettings<'_> {
         format!("zones/{}/settings/ssl", self.zone_id)
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))
