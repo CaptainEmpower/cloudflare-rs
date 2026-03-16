@@ -74,7 +74,7 @@ impl EndpointSpec for CreateAccessServiceToken<'_> {
         format!("accounts/{}/access/service_tokens", self.account_id)
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))
@@ -108,7 +108,7 @@ impl EndpointSpec for UpdateAccessServiceToken<'_> {
         )
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))
