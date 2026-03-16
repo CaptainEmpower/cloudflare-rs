@@ -103,7 +103,7 @@ impl EndpointSpec for CreatePageRule<'_> {
         format!("zones/{}/pagerules", self.zone_id)
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))
@@ -134,7 +134,7 @@ impl EndpointSpec for UpdatePageRule<'_> {
         format!("zones/{}/pagerules/{}", self.zone_id, self.rule_id)
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))
@@ -165,7 +165,7 @@ impl EndpointSpec for EditPageRule<'_> {
         format!("zones/{}/pagerules/{}", self.zone_id, self.rule_id)
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))
