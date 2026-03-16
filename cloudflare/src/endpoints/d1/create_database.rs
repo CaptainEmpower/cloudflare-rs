@@ -37,7 +37,7 @@ impl EndpointSpec for CreateDatabase<'_> {
         format!("accounts/{}/d1/database", self.account_identifier)
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         let body = serde_json::to_string(&self.params).unwrap();
         Some(RequestBody::Json(body))
     }

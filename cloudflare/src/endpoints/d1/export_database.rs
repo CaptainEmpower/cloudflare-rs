@@ -47,7 +47,7 @@ impl EndpointSpec for ExportDatabase<'_> {
         )
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         let body = serde_json::to_string(&self.params).unwrap();
         Some(RequestBody::Json(body))
     }
