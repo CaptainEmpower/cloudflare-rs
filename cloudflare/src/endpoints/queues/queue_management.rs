@@ -25,7 +25,7 @@ impl EndpointSpec for CreateQueue<'_> {
         format!("accounts/{}/queues", self.account_id)
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))
@@ -122,7 +122,7 @@ impl EndpointSpec for UpdateQueue<'_> {
         format!("accounts/{}/queues/{}", self.account_id, self.queue_id)
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))

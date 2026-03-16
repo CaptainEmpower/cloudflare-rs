@@ -32,7 +32,7 @@ impl EndpointSpec for CreateConsumer<'_> {
         )
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))
@@ -68,7 +68,7 @@ impl EndpointSpec for UpdateConsumer<'_> {
         )
     }
 
-    fn body(&self) -> Option<RequestBody> {
+    fn body(&self) -> Option<RequestBody<'_>> {
         Some(RequestBody::Json(
             serde_json::to_string(&self.params).unwrap(),
         ))
