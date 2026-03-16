@@ -193,7 +193,7 @@ mod tests {
             "/dummy/multipart".into()
         }
 
-        fn body(&self) -> Option<RequestBody> {
+        fn body(&self) -> Option<RequestBody<'_>> {
             Some(RequestBody::MultiPart(&DummyMultipart))
         }
     }

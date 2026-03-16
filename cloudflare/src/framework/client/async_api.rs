@@ -257,7 +257,7 @@ mod tests {
             "/dummy/json".into()
         }
 
-        fn body(&self) -> Option<RequestBody> {
+        fn body(&self) -> Option<RequestBody<'_>> {
             Some(RequestBody::Json(json!({"key": "value"}).to_string()))
         }
     }
@@ -280,7 +280,7 @@ mod tests {
             "/dummy/raw".into()
         }
 
-        fn body(&self) -> Option<RequestBody> {
+        fn body(&self) -> Option<RequestBody<'_>> {
             Some(RequestBody::Raw(b"raw content".to_vec()))
         }
     }
@@ -302,7 +302,7 @@ mod tests {
             "/dummy/multipart".into()
         }
 
-        fn body(&self) -> Option<RequestBody> {
+        fn body(&self) -> Option<RequestBody<'_>> {
             Some(RequestBody::MultiPart(&DummyMultipart))
         }
     }
