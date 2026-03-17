@@ -3,7 +3,7 @@ use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 
 /// Origin CA Certificate
-/// https://developers.cloudflare.com/api/resources/origin_ca_certificates/
+/// <https://developers.cloudflare.com/api/resources/origin_ca_certificates/>
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct OriginCaCertificate {
     /// Certificate identifier

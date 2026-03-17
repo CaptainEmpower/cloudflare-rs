@@ -7,7 +7,7 @@ use super::ssl_data_structures::{
 };
 
 /// List Origin CA certificates
-/// https://developers.cloudflare.com/api/resources/origin_ca_certificates/methods/list/
+/// <https://developers.cloudflare.com/api/resources/origin_ca_certificates/methods/list/>
 #[derive(Debug)]
 pub struct ListOriginCaCertificates {
     /// Zone identifier (optional, for zone-level certificates)
@@ -34,7 +34,7 @@ impl EndpointSpec for ListOriginCaCertificates {
 }
 
 /// Get an Origin CA certificate by ID
-/// https://developers.cloudflare.com/api/resources/origin_ca_certificates/methods/get/
+/// <https://developers.cloudflare.com/api/resources/origin_ca_certificates/methods/get/>
 #[derive(Debug)]
 pub struct GetOriginCaCertificate<'a> {
     /// Certificate identifier
@@ -55,7 +55,7 @@ impl EndpointSpec for GetOriginCaCertificate<'_> {
 }
 
 /// Create a new Origin CA certificate
-/// https://developers.cloudflare.com/api/resources/origin_ca_certificates/methods/create/
+/// <https://developers.cloudflare.com/api/resources/origin_ca_certificates/methods/create/>
 #[derive(Debug)]
 pub struct CreateOriginCaCertificate {
     /// Certificate creation parameters
@@ -82,7 +82,7 @@ impl EndpointSpec for CreateOriginCaCertificate {
 }
 
 /// Revoke an Origin CA certificate
-/// https://developers.cloudflare.com/api/resources/origin_ca_certificates/methods/revoke/
+/// <https://developers.cloudflare.com/api/resources/origin_ca_certificates/methods/revoke/>
 #[derive(Debug)]
 pub struct RevokeOriginCaCertificate<'a> {
     /// Certificate identifier
@@ -103,7 +103,7 @@ impl EndpointSpec for RevokeOriginCaCertificate<'_> {
 }
 
 /// Get SSL settings for a zone
-/// https://developers.cloudflare.com/api/resources/zone_settings/subresources/ssl/methods/get/
+/// <https://developers.cloudflare.com/api/resources/zone_settings/subresources/ssl/methods/get/>
 #[derive(Debug)]
 pub struct GetZoneSslSettings<'a> {
     /// Zone identifier
@@ -124,7 +124,7 @@ impl EndpointSpec for GetZoneSslSettings<'_> {
 }
 
 /// Update SSL settings for a zone
-/// https://developers.cloudflare.com/api/resources/zone_settings/subresources/ssl/methods/edit/
+/// <https://developers.cloudflare.com/api/resources/zone_settings/subresources/ssl/methods/edit/>
 #[derive(Debug)]
 pub struct UpdateZoneSslSettings<'a> {
     /// Zone identifier
