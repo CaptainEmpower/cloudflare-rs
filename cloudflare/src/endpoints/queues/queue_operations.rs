@@ -4,7 +4,7 @@ use crate::framework::response::ApiSuccess;
 use super::queue_data_structures::{PurgeQueueParams, PurgeQueueResponse};
 
 /// Purge all messages from a queue
-/// https://developers.cloudflare.com/api/resources/queues/methods/purge/
+/// <https://developers.cloudflare.com/api/resources/queues/methods/purge/>
 #[derive(Debug)]
 pub struct PurgeQueue<'a> {
     /// Account identifier
@@ -38,7 +38,7 @@ impl EndpointSpec for PurgeQueue<'_> {
 }
 
 /// Get the status of a queue purge operation
-/// https://developers.cloudflare.com/api/resources/queues/methods/purge-status/
+/// <https://developers.cloudflare.com/api/resources/queues/methods/purge-status/>
 #[derive(Debug)]
 pub struct GetPurgeStatus<'a> {
     /// Account identifier
