@@ -4,7 +4,7 @@ use crate::framework::response::ApiSuccess;
 use super::access_data_structures::AccessUser;
 
 /// List Access users
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/users/methods/list/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/users/methods/list/>
 #[derive(Debug)]
 pub struct ListAccessUsers<'a> {
     /// Account identifier
@@ -25,7 +25,7 @@ impl EndpointSpec for ListAccessUsers<'_> {
 }
 
 /// Get an Access user
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/users/methods/get/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/users/methods/get/>
 #[derive(Debug)]
 pub struct GetAccessUser<'a> {
     /// Account identifier
@@ -48,7 +48,7 @@ impl EndpointSpec for GetAccessUser<'_> {
 }
 
 /// Get failed Access logins
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/users/methods/list_failed_logins/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/users/methods/list_failed_logins/>
 #[derive(Debug)]
 pub struct GetFailedAccessLogins<'a> {
     /// Account identifier
@@ -74,7 +74,7 @@ impl EndpointSpec for GetFailedAccessLogins<'_> {
 }
 
 /// Get Access user's active sessions
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/users/methods/list_active_sessions/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/users/methods/list_active_sessions/>
 #[derive(Debug)]
 pub struct GetAccessUserActiveSessions<'a> {
     /// Account identifier
@@ -100,7 +100,7 @@ impl EndpointSpec for GetAccessUserActiveSessions<'_> {
 }
 
 /// Revoke Access user sessions
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/users/methods/revoke_user_sessions/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/users/methods/revoke_user_sessions/>
 #[derive(Debug)]
 pub struct RevokeAccessUserSessions<'a> {
     /// Account identifier

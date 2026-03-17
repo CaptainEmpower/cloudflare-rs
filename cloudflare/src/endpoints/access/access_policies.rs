@@ -1,7 +1,9 @@
 use crate::framework::endpoint::{EndpointSpec, Method, RequestBody};
 use crate::framework::response::ApiSuccess;
 
-use super::access_data_structures::{AccessPolicy, CreateAccessPolicyParams, UpdateAccessPolicyParams};
+use super::access_data_structures::{
+    AccessPolicy, CreateAccessPolicyParams, UpdateAccessPolicyParams,
+};
 
 /// List Access policies for an application
 /// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/list/
@@ -38,7 +40,7 @@ impl EndpointSpec for ListAccessPolicies<'_> {
 }
 
 /// Get an Access policy
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/get/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/get/>
 #[derive(Debug)]
 pub struct GetAccessPolicy<'a> {
     /// Account or zone identifier
@@ -67,14 +69,17 @@ impl EndpointSpec for GetAccessPolicy<'_> {
         };
 
         match self.app_id {
-            Some(app_id) => format!("{}/access/apps/{}/policies/{}", base, app_id, self.policy_id),
+            Some(app_id) => format!(
+                "{}/access/apps/{}/policies/{}",
+                base, app_id, self.policy_id
+            ),
             None => format!("{}/access/policies/{}", base, self.policy_id),
         }
     }
 }
 
 /// Create an Access policy
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/create/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/create/>
 #[derive(Debug)]
 pub struct CreateAccessPolicy<'a> {
     /// Account or zone identifier
@@ -116,7 +121,7 @@ impl EndpointSpec for CreateAccessPolicy<'_> {
 }
 
 /// Update an Access policy
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/update/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/update/>
 #[derive(Debug)]
 pub struct UpdateAccessPolicy<'a> {
     /// Account or zone identifier
@@ -147,7 +152,10 @@ impl EndpointSpec for UpdateAccessPolicy<'_> {
         };
 
         match self.app_id {
-            Some(app_id) => format!("{}/access/apps/{}/policies/{}", base, app_id, self.policy_id),
+            Some(app_id) => format!(
+                "{}/access/apps/{}/policies/{}",
+                base, app_id, self.policy_id
+            ),
             None => format!("{}/access/policies/{}", base, self.policy_id),
         }
     }
@@ -160,7 +168,7 @@ impl EndpointSpec for UpdateAccessPolicy<'_> {
 }
 
 /// Delete an Access policy
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/delete/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/delete/>
 #[derive(Debug)]
 pub struct DeleteAccessPolicy<'a> {
     /// Account or zone identifier
@@ -189,7 +197,10 @@ impl EndpointSpec for DeleteAccessPolicy<'_> {
         };
 
         match self.app_id {
-            Some(app_id) => format!("{}/access/apps/{}/policies/{}", base, app_id, self.policy_id),
+            Some(app_id) => format!(
+                "{}/access/apps/{}/policies/{}",
+                base, app_id, self.policy_id
+            ),
             None => format!("{}/access/policies/{}", base, self.policy_id),
         }
     }

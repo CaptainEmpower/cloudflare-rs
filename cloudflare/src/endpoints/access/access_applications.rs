@@ -6,7 +6,7 @@ use super::access_data_structures::{
 };
 
 /// List Access applications
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/list/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/list/>
 #[derive(Debug)]
 pub struct ListAccessApplications<'a> {
     /// Account or zone identifier
@@ -33,7 +33,7 @@ impl EndpointSpec for ListAccessApplications<'_> {
 }
 
 /// Get an Access application
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/get/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/get/>
 #[derive(Debug)]
 pub struct GetAccessApplication<'a> {
     /// Account or zone identifier
@@ -62,7 +62,7 @@ impl EndpointSpec for GetAccessApplication<'_> {
 }
 
 /// Create an Access application
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/>
 #[derive(Debug)]
 pub struct CreateAccessApplication<'a> {
     /// Account or zone identifier
@@ -97,7 +97,7 @@ impl EndpointSpec for CreateAccessApplication<'_> {
 }
 
 /// Update an Access application
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/update/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/update/>
 #[derive(Debug)]
 pub struct UpdateAccessApplication<'a> {
     /// Account or zone identifier
@@ -134,7 +134,7 @@ impl EndpointSpec for UpdateAccessApplication<'_> {
 }
 
 /// Delete an Access application
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/delete/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/delete/>
 #[derive(Debug)]
 pub struct DeleteAccessApplication<'a> {
     /// Account or zone identifier

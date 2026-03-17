@@ -6,7 +6,7 @@ use super::access_data_structures::{
 };
 
 /// List Access service tokens
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/list/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/list/>
 #[derive(Debug)]
 pub struct ListAccessServiceTokens<'a> {
     /// Account identifier
@@ -27,7 +27,7 @@ impl EndpointSpec for ListAccessServiceTokens<'_> {
 }
 
 /// Get an Access service token
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/get/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/get/>
 #[derive(Debug)]
 pub struct GetAccessServiceToken<'a> {
     /// Account identifier
@@ -53,7 +53,7 @@ impl EndpointSpec for GetAccessServiceToken<'_> {
 }
 
 /// Create an Access service token
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/create/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/create/>
 #[derive(Debug)]
 pub struct CreateAccessServiceToken<'a> {
     /// Account identifier
@@ -82,7 +82,7 @@ impl EndpointSpec for CreateAccessServiceToken<'_> {
 }
 
 /// Update an Access service token
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/update/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/update/>
 #[derive(Debug)]
 pub struct UpdateAccessServiceToken<'a> {
     /// Account identifier
@@ -116,7 +116,7 @@ impl EndpointSpec for UpdateAccessServiceToken<'_> {
 }
 
 /// Delete an Access service token
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/delete/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/delete/>
 #[derive(Debug)]
 pub struct DeleteAccessServiceToken<'a> {
     /// Account identifier
@@ -142,7 +142,7 @@ impl EndpointSpec for DeleteAccessServiceToken<'_> {
 }
 
 /// Rotate an Access service token
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/rotate/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/rotate/>
 #[derive(Debug)]
 pub struct RotateAccessServiceToken<'a> {
     /// Account identifier
