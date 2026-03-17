@@ -41,7 +41,7 @@ pub mod spec {
     ///
     /// If the request succeeds, the call will resolve to a `ResultType`.
     pub trait EndpointSpec {
-        /// If the body of the response is raw bytes (Vec<u8>), set this to `true`. Defaults to `false`.
+        /// If the body of the response is raw bytes (`Vec<u8>`), set this to `true`. Defaults to `false`.
         const IS_RAW_BODY: bool = false;
 
         /// The JSON response type for this endpoint, if any.
