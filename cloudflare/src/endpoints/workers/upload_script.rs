@@ -4,7 +4,7 @@ use crate::framework::response::ApiSuccess;
 use super::script_data_structures::{WorkerScript, WorkerScriptContent, WorkerScriptMetadata};
 
 /// Upload/Update a Workers script using legacy multipart API
-/// https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/
+/// <https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/>
 #[derive(Debug)]
 pub struct UploadWorkerScript<'a> {
     /// Account identifier
@@ -67,7 +67,7 @@ impl MultipartBody for UploadWorkerScript<'_> {
 }
 
 /// Upload a Workers script using the new 2025 JSON API (Beta)
-/// https://developers.cloudflare.com/changelog/2025-09-03-new-workers-api/
+/// <https://developers.cloudflare.com/changelog/2025-09-03-new-workers-api/>
 #[derive(Debug)]
 pub struct UploadWorkerScriptJson<'a> {
     /// Account identifier

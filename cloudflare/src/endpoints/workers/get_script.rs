@@ -4,7 +4,7 @@ use crate::framework::response::ApiSuccess;
 use super::script_data_structures::WorkerScript;
 
 /// Get a Workers script by name
-/// https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/get/
+/// <https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/get/>
 #[derive(Debug)]
 pub struct GetWorkerScript<'a> {
     /// Account identifier
