@@ -4,7 +4,7 @@ use crate::framework::response::ApiSuccess;
 use super::queue_data_structures::{CreateQueueParams, Queue, UpdateQueueParams};
 
 /// Create a new queue
-/// https://developers.cloudflare.com/api/resources/queues/methods/create/
+/// <https://developers.cloudflare.com/api/resources/queues/methods/create/>
 #[derive(Debug)]
 pub struct CreateQueue<'a> {
     /// Account identifier
@@ -33,7 +33,7 @@ impl EndpointSpec for CreateQueue<'_> {
 }
 
 /// List queues in account
-/// https://developers.cloudflare.com/api/resources/queues/methods/list/
+/// <https://developers.cloudflare.com/api/resources/queues/methods/list/>
 #[derive(Debug)]
 pub struct ListQueues<'a> {
     /// Account identifier
@@ -76,7 +76,7 @@ impl EndpointSpec for ListQueues<'_> {
 }
 
 /// Get a specific queue by ID
-/// https://developers.cloudflare.com/api/resources/queues/methods/get/
+/// <https://developers.cloudflare.com/api/resources/queues/methods/get/>
 #[derive(Debug)]
 pub struct GetQueue<'a> {
     /// Account identifier
@@ -99,7 +99,7 @@ impl EndpointSpec for GetQueue<'_> {
 }
 
 /// Update queue configuration
-/// https://developers.cloudflare.com/api/resources/queues/methods/update/
+/// <https://developers.cloudflare.com/api/resources/queues/methods/update/>
 #[derive(Debug)]
 pub struct UpdateQueue<'a> {
     /// Account identifier
@@ -130,7 +130,7 @@ impl EndpointSpec for UpdateQueue<'_> {
 }
 
 /// Delete a queue
-/// https://developers.cloudflare.com/api/resources/queues/methods/delete/
+/// <https://developers.cloudflare.com/api/resources/queues/methods/delete/>
 #[derive(Debug)]
 pub struct DeleteQueue<'a> {
     /// Account identifier

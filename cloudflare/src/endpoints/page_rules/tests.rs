@@ -341,4 +341,28 @@ mod tests {
         let delete = DeletePageRule { zone_id, rule_id };
         assert_eq!(delete.path(), "zones/test-zone-123/pagerules/test-rule-456");
     }
+
+    #[test]
+    fn test_page_rule_constraint_serialization() {
+        let constraint = PageRuleConstraint {
+            operator: "matches".to_string(),
+            value: "*.example.com/*".to_string(),
+        };
+
+        let json = serde_json::to_string(&constraint).unwrap();
+        let deserialized: PageRuleConstraint = serde_json::from_str(&json).unwrap();
+        assert_eq!(constraint, deserialized);
+        assert_eq!(constraint.operator, "matches");
+        assert_eq!(constraint.value, "*.example.com/*");
+
+        // Test another constraint type
+        let constraint2 = PageRuleConstraint {
+            operator: "contains".to_string(),
+            value: "/api/".to_string(),
+        };
+
+        let json2 = serde_json::to_string(&constraint2).unwrap();
+        let deserialized2: PageRuleConstraint = serde_json::from_str(&json2).unwrap();
+        assert_eq!(constraint2, deserialized2);
+    }
 }

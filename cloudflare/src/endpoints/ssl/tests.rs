@@ -77,13 +77,17 @@ mod tests {
 
     #[test]
     fn test_create_certificate_params_helpers() {
-        let csr = "-----BEGIN CERTIFICATE REQUEST-----\ntest\n-----END CERTIFICATE REQUEST-----".to_string();
+        let csr = "-----BEGIN CERTIFICATE REQUEST-----\ntest\n-----END CERTIFICATE REQUEST-----"
+            .to_string();
         let hostnames = vec!["example.com".to_string(), "*.example.com".to_string()];
 
         // Test RSA certificate creation
         let rsa_params = CreateOriginCaCertificateParams::new_rsa(csr.clone(), hostnames.clone());
         assert_eq!(rsa_params.request_type, Some("origin-rsa".to_string()));
-        assert_eq!(rsa_params.requested_validity, Some(CertificateValidity::YEAR));
+        assert_eq!(
+            rsa_params.requested_validity,
+            Some(CertificateValidity::YEAR)
+        );
         assert_eq!(rsa_params.hostnames, hostnames);
 
         // Test ECC certificate creation
@@ -91,12 +95,19 @@ mod tests {
         assert_eq!(ecc_params.request_type, Some("origin-ecc".to_string()));
 
         // Test keyless certificate creation
-        let keyless_params = CreateOriginCaCertificateParams::new_keyless(csr.clone(), hostnames.clone());
-        assert_eq!(keyless_params.request_type, Some("keyless-certificate".to_string()));
+        let keyless_params =
+            CreateOriginCaCertificateParams::new_keyless(csr.clone(), hostnames.clone());
+        assert_eq!(
+            keyless_params.request_type,
+            Some("keyless-certificate".to_string())
+        );
 
         // Test custom validity
         let custom_validity = rsa_params.with_validity(CertificateValidity::TWO_YEARS);
-        assert_eq!(custom_validity.requested_validity, Some(CertificateValidity::TWO_YEARS));
+        assert_eq!(
+            custom_validity.requested_validity,
+            Some(CertificateValidity::TWO_YEARS)
+        );
     }
 
     #[test]
@@ -180,13 +191,16 @@ mod tests {
     #[test]
     fn test_create_origin_ca_certificate_endpoint() {
         let create_params = CreateOriginCaCertificateParams {
-            csr: "-----BEGIN CERTIFICATE REQUEST-----\ntest\n-----END CERTIFICATE REQUEST-----".to_string(),
+            csr: "-----BEGIN CERTIFICATE REQUEST-----\ntest\n-----END CERTIFICATE REQUEST-----"
+                .to_string(),
             hostnames: vec!["test.example.com".to_string()],
             request_type: Some("origin-rsa".to_string()),
             requested_validity: Some(365),
         };
 
-        let create_request = CreateOriginCaCertificate { params: create_params };
+        let create_request = CreateOriginCaCertificate {
+            params: create_params,
+        };
 
         assert_eq!(create_request.method(), Method::POST);
         assert_eq!(create_request.path(), "certificates");

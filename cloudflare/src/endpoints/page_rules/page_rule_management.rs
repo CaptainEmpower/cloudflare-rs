@@ -4,7 +4,7 @@ use crate::framework::response::ApiSuccess;
 use super::page_rule_data_structures::{CreatePageRuleParams, PageRule, UpdatePageRuleParams};
 
 /// List page rules for a zone
-/// https://developers.cloudflare.com/api/resources/page_rules/methods/list/
+/// <https://developers.cloudflare.com/api/resources/page_rules/methods/list/>
 #[derive(Debug)]
 pub struct ListPageRules<'a> {
     /// Zone identifier
@@ -59,7 +59,7 @@ impl EndpointSpec for ListPageRules<'_> {
 }
 
 /// Get a specific page rule
-/// https://developers.cloudflare.com/api/resources/page_rules/methods/get/
+/// <https://developers.cloudflare.com/api/resources/page_rules/methods/get/>
 #[derive(Debug)]
 pub struct GetPageRule<'a> {
     /// Zone identifier
@@ -82,7 +82,7 @@ impl EndpointSpec for GetPageRule<'_> {
 }
 
 /// Create a new page rule
-/// https://developers.cloudflare.com/api/resources/page_rules/methods/create/
+/// <https://developers.cloudflare.com/api/resources/page_rules/methods/create/>
 #[derive(Debug)]
 pub struct CreatePageRule<'a> {
     /// Zone identifier
@@ -111,7 +111,7 @@ impl EndpointSpec for CreatePageRule<'_> {
 }
 
 /// Update a page rule (full replacement)
-/// https://developers.cloudflare.com/api/resources/page_rules/methods/update/
+/// <https://developers.cloudflare.com/api/resources/page_rules/methods/update/>
 #[derive(Debug)]
 pub struct UpdatePageRule<'a> {
     /// Zone identifier
@@ -142,7 +142,7 @@ impl EndpointSpec for UpdatePageRule<'_> {
 }
 
 /// Edit a page rule (partial update)
-/// https://developers.cloudflare.com/api/resources/page_rules/methods/edit/
+/// <https://developers.cloudflare.com/api/resources/page_rules/methods/edit/>
 #[derive(Debug)]
 pub struct EditPageRule<'a> {
     /// Zone identifier
@@ -173,7 +173,7 @@ impl EndpointSpec for EditPageRule<'_> {
 }
 
 /// Delete a page rule
-/// https://developers.cloudflare.com/api/resources/page_rules/methods/delete/
+/// <https://developers.cloudflare.com/api/resources/page_rules/methods/delete/>
 #[derive(Debug)]
 pub struct DeletePageRule<'a> {
     /// Zone identifier

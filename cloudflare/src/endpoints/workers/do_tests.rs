@@ -66,7 +66,7 @@ mod tests {
         assert_eq!(response, deserialized);
         assert_eq!(response.result.len(), 1);
         assert_eq!(response.result[0].id, "object-123");
-        assert_eq!(response.result[0].has_stored_data, true);
+        assert!(response.result[0].has_stored_data);
         assert!(response.result_info.is_some());
         assert_eq!(
             response.result_info.as_ref().unwrap().cursor,

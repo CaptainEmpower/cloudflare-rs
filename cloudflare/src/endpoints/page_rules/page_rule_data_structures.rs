@@ -3,7 +3,7 @@ use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 
 /// A Cloudflare Page Rule
-/// https://developers.cloudflare.com/api/resources/page_rules/
+/// <https://developers.cloudflare.com/api/resources/page_rules/>
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct PageRule {
     /// Rule identifier tag
@@ -106,7 +106,9 @@ impl PageRuleAction {
     pub fn always_online(enabled: bool) -> Self {
         Self {
             id: "always_online".to_string(),
-            value: Some(PageRuleActionValue::String(if enabled { "on" } else { "off" }.to_string())),
+            value: Some(PageRuleActionValue::String(
+                if enabled { "on" } else { "off" }.to_string(),
+            )),
         }
     }
 
@@ -122,7 +124,9 @@ impl PageRuleAction {
     pub fn browser_check(enabled: bool) -> Self {
         Self {
             id: "browser_check".to_string(),
-            value: Some(PageRuleActionValue::String(if enabled { "on" } else { "off" }.to_string())),
+            value: Some(PageRuleActionValue::String(
+                if enabled { "on" } else { "off" }.to_string(),
+            )),
         }
     }
 
@@ -186,7 +190,9 @@ impl PageRuleAction {
     pub fn email_obfuscation(enabled: bool) -> Self {
         Self {
             id: "email_obfuscation".to_string(),
-            value: Some(PageRuleActionValue::String(if enabled { "on" } else { "off" }.to_string())),
+            value: Some(PageRuleActionValue::String(
+                if enabled { "on" } else { "off" }.to_string(),
+            )),
         }
     }
 
@@ -205,7 +211,9 @@ impl PageRuleAction {
     pub fn ip_geolocation(enabled: bool) -> Self {
         Self {
             id: "ip_geolocation".to_string(),
-            value: Some(PageRuleActionValue::String(if enabled { "on" } else { "off" }.to_string())),
+            value: Some(PageRuleActionValue::String(
+                if enabled { "on" } else { "off" }.to_string(),
+            )),
         }
     }
 
@@ -225,7 +233,9 @@ impl PageRuleAction {
     pub fn opportunistic_encryption(enabled: bool) -> Self {
         Self {
             id: "opportunistic_encryption".to_string(),
-            value: Some(PageRuleActionValue::String(if enabled { "on" } else { "off" }.to_string())),
+            value: Some(PageRuleActionValue::String(
+                if enabled { "on" } else { "off" }.to_string(),
+            )),
         }
     }
 
@@ -233,7 +243,9 @@ impl PageRuleAction {
     pub fn rocket_loader(enabled: bool) -> Self {
         Self {
             id: "rocket_loader".to_string(),
-            value: Some(PageRuleActionValue::String(if enabled { "on" } else { "off" }.to_string())),
+            value: Some(PageRuleActionValue::String(
+                if enabled { "on" } else { "off" }.to_string(),
+            )),
         }
     }
 
@@ -249,7 +261,9 @@ impl PageRuleAction {
     pub fn server_side_excludes(enabled: bool) -> Self {
         Self {
             id: "server_side_excludes".to_string(),
-            value: Some(PageRuleActionValue::String(if enabled { "on" } else { "off" }.to_string())),
+            value: Some(PageRuleActionValue::String(
+                if enabled { "on" } else { "off" }.to_string(),
+            )),
         }
     }
 
@@ -265,7 +279,9 @@ impl PageRuleAction {
     pub fn true_client_ip_header(enabled: bool) -> Self {
         Self {
             id: "true_client_ip_header".to_string(),
-            value: Some(PageRuleActionValue::String(if enabled { "on" } else { "off" }.to_string())),
+            value: Some(PageRuleActionValue::String(
+                if enabled { "on" } else { "off" }.to_string(),
+            )),
         }
     }
 
@@ -273,7 +289,9 @@ impl PageRuleAction {
     pub fn waf(enabled: bool) -> Self {
         Self {
             id: "waf".to_string(),
-            value: Some(PageRuleActionValue::String(if enabled { "on" } else { "off" }.to_string())),
+            value: Some(PageRuleActionValue::String(
+                if enabled { "on" } else { "off" }.to_string(),
+            )),
         }
     }
 }

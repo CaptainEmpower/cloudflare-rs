@@ -4,7 +4,7 @@ use crate::framework::response::ApiSuccess;
 use super::queue_data_structures::{Consumer, CreateConsumerParams};
 
 /// Create or update a queue consumer
-/// https://developers.cloudflare.com/api/resources/queues/subresources/consumers/methods/create/
+/// <https://developers.cloudflare.com/api/resources/queues/subresources/consumers/methods/create/>
 #[derive(Debug)]
 pub struct CreateConsumer<'a> {
     /// Account identifier
@@ -40,7 +40,7 @@ impl EndpointSpec for CreateConsumer<'_> {
 }
 
 /// Update an existing queue consumer
-/// https://developers.cloudflare.com/api/resources/queues/subresources/consumers/methods/update/
+/// <https://developers.cloudflare.com/api/resources/queues/subresources/consumers/methods/update/>
 #[derive(Debug)]
 pub struct UpdateConsumer<'a> {
     /// Account identifier
@@ -76,7 +76,7 @@ impl EndpointSpec for UpdateConsumer<'_> {
 }
 
 /// Get a specific queue consumer
-/// https://developers.cloudflare.com/api/resources/queues/subresources/consumers/methods/get/
+/// <https://developers.cloudflare.com/api/resources/queues/subresources/consumers/methods/get/>
 #[derive(Debug)]
 pub struct GetConsumer<'a> {
     /// Account identifier
@@ -104,7 +104,7 @@ impl EndpointSpec for GetConsumer<'_> {
 }
 
 /// Delete a queue consumer
-/// https://developers.cloudflare.com/api/resources/queues/subresources/consumers/methods/delete/
+/// <https://developers.cloudflare.com/api/resources/queues/subresources/consumers/methods/delete/>
 #[derive(Debug)]
 pub struct DeleteConsumer<'a> {
     /// Account identifier

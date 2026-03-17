@@ -1,10 +1,10 @@
 #[cfg(test)]
 mod tests {
     use super::super::{
-        Consumer, ConsumerSettings, CreateConsumer, CreateConsumerParams, CreateQueue, CreateQueueParams,
-        DeleteConsumer, DeleteQueue, GetConsumer, GetPurgeStatus, GetQueue, ListQueues,
-        Producer, PurgeQueue, PurgeQueueParams, PurgeQueueResponse, Queue, QueueSettings,
-        ScriptReference, UpdateConsumer, UpdateQueue, UpdateQueueParams,
+        Consumer, ConsumerSettings, CreateConsumer, CreateConsumerParams, CreateQueue,
+        CreateQueueParams, DeleteConsumer, DeleteQueue, GetConsumer, GetPurgeStatus, GetQueue,
+        ListQueues, Producer, PurgeQueue, PurgeQueueParams, PurgeQueueResponse, Queue,
+        QueueSettings, ScriptReference, UpdateConsumer, UpdateQueue, UpdateQueueParams,
     };
     use crate::framework::endpoint::{EndpointSpec, Method, RequestBody};
     use chrono::{DateTime, Utc};

@@ -1,13 +1,13 @@
 #[cfg(test)]
 mod tests {
     use super::super::{
-        AccessApplication, AccessPolicy, AccessRule, AccessUser, ApplicationType,
+        AccessApplication, AccessPolicy, AccessRule, AccessUser, ApplicationType, CorsHeaders,
         CreateAccessApplication, CreateAccessApplicationParams, CreateAccessPolicy,
-        CreateAccessPolicyParams, CreateAccessServiceToken, CreateServiceTokenParams, CorsHeaders,
-        DeleteAccessApplication, DeleteAccessPolicy, DeleteAccessServiceToken, GetAccessApplication,
-        GetAccessPolicy, GetAccessServiceToken, GetAccessUser, ListAccessApplications,
-        ListAccessPolicies, ListAccessServiceTokens, ListAccessUsers, PolicyDecision,
-        RotateAccessServiceToken, ServiceToken, UpdateAccessApplication,
+        CreateAccessPolicyParams, CreateAccessServiceToken, CreateServiceTokenParams,
+        DeleteAccessApplication, DeleteAccessPolicy, DeleteAccessServiceToken,
+        GetAccessApplication, GetAccessPolicy, GetAccessServiceToken, GetAccessUser,
+        ListAccessApplications, ListAccessPolicies, ListAccessServiceTokens, ListAccessUsers,
+        PolicyDecision, RotateAccessServiceToken, ServiceToken, UpdateAccessApplication,
         UpdateAccessApplicationParams, UpdateAccessPolicy, UpdateAccessPolicyParams,
         UpdateAccessServiceToken, UpdateServiceTokenParams,
     };
@@ -240,8 +240,15 @@ mod tests {
                 "https://example.com".to_string(),
                 "https://app.example.com".to_string(),
             ]),
-            allowed_methods: Some(vec!["GET".to_string(), "POST".to_string(), "PUT".to_string()]),
-            allowed_headers: Some(vec!["Content-Type".to_string(), "Authorization".to_string()]),
+            allowed_methods: Some(vec![
+                "GET".to_string(),
+                "POST".to_string(),
+                "PUT".to_string(),
+            ]),
+            allowed_headers: Some(vec![
+                "Content-Type".to_string(),
+                "Authorization".to_string(),
+            ]),
             allow_credentials: Some(true),
             max_age: Some(86400),
         };
@@ -382,7 +389,10 @@ mod tests {
         };
 
         assert_eq!(list_tokens.method(), Method::GET);
-        assert_eq!(list_tokens.path(), "accounts/account-tokens/access/service_tokens");
+        assert_eq!(
+            list_tokens.path(),
+            "accounts/account-tokens/access/service_tokens"
+        );
 
         // Create token
         let create_params = CreateServiceTokenParams {
@@ -464,10 +474,7 @@ mod tests {
             app_id,
             is_account: true,
         };
-        assert_eq!(
-            get_app.path(),
-            "accounts/test-account/access/apps/test-app"
-        );
+        assert_eq!(get_app.path(), "accounts/test-account/access/apps/test-app");
 
         // Policy paths
         let get_policy = GetAccessPolicy {
@@ -542,5 +549,208 @@ mod tests {
 
         assert_eq!(policy_params, policy_deserialized);
         assert_eq!(policy_params.decision, PolicyDecision::Deny);
+    }
+
+    #[test]
+    fn test_delete_access_application_endpoint() {
+        let delete_app = DeleteAccessApplication {
+            account_id: "test-account",
+            app_id: "app-to-delete",
+            is_account: true,
+        };
+
+        assert_eq!(delete_app.method(), Method::DELETE);
+        assert_eq!(
+            delete_app.path(),
+            "accounts/test-account/access/apps/app-to-delete"
+        );
+    }
+
+    #[test]
+    fn test_delete_access_policy_endpoint() {
+        let delete_policy = DeleteAccessPolicy {
+            account_id: "test-account",
+            policy_id: "policy-to-delete",
+            app_id: Some("test-app"),
+            is_account: true,
+        };
+
+        assert_eq!(delete_policy.method(), Method::DELETE);
+        assert_eq!(
+            delete_policy.path(),
+            "accounts/test-account/access/apps/test-app/policies/policy-to-delete"
+        );
+
+        // Test account-level policy deletion
+        let delete_account_policy = DeleteAccessPolicy {
+            account_id: "test-account",
+            policy_id: "account-policy-to-delete",
+            app_id: None,
+            is_account: true,
+        };
+
+        assert_eq!(delete_account_policy.method(), Method::DELETE);
+        assert_eq!(
+            delete_account_policy.path(),
+            "accounts/test-account/access/policies/account-policy-to-delete"
+        );
+    }
+
+    #[test]
+    fn test_delete_access_service_token_endpoint() {
+        let delete_token = DeleteAccessServiceToken {
+            account_id: "test-account",
+            token_id: "token-to-delete",
+        };
+
+        assert_eq!(delete_token.method(), Method::DELETE);
+        assert_eq!(
+            delete_token.path(),
+            "accounts/test-account/access/service_tokens/token-to-delete"
+        );
+    }
+
+    #[test]
+    fn test_update_access_application_endpoint() {
+        let update_params = UpdateAccessApplicationParams {
+            name: Some("Updated App Name".to_string()),
+            domain: Some("updated.example.com".to_string()),
+            session_duration: Some("24h".to_string()),
+            auto_redirect_to_identity: Some(true),
+            allowed_idps: None,
+            cors_headers: None,
+            custom_deny_message: Some("Access denied - updated".to_string()),
+            custom_deny_url: None,
+            tags: None,
+            logo_url: None,
+            skip_interstitial: Some(false),
+        };
+
+        let update_app = UpdateAccessApplication {
+            account_id: "test-account",
+            app_id: "app-to-update",
+            params: update_params,
+            is_account: true,
+        };
+
+        assert_eq!(update_app.method(), Method::PUT);
+        assert_eq!(
+            update_app.path(),
+            "accounts/test-account/access/apps/app-to-update"
+        );
+        assert!(update_app.body().is_some());
+    }
+
+    #[test]
+    fn test_update_access_policy_endpoint() {
+        let update_params = UpdateAccessPolicyParams {
+            name: Some("Updated Policy Name".to_string()),
+            decision: Some(PolicyDecision::Allow),
+            include: None,
+            exclude: None,
+            require: None,
+            approval_groups: None,
+            session_duration: Some("8h".to_string()),
+        };
+
+        let update_policy = UpdateAccessPolicy {
+            account_id: "test-account",
+            policy_id: "policy-to-update",
+            app_id: Some("test-app"),
+            params: update_params,
+            is_account: true,
+        };
+
+        assert_eq!(update_policy.method(), Method::PUT);
+        assert_eq!(
+            update_policy.path(),
+            "accounts/test-account/access/apps/test-app/policies/policy-to-update"
+        );
+        assert!(update_policy.body().is_some());
+    }
+
+    #[test]
+    fn test_update_access_service_token_endpoint() {
+        let update_params = UpdateServiceTokenParams {
+            name: Some("Updated Token Name".to_string()),
+            duration: Some("30d".to_string()),
+        };
+
+        let update_token = UpdateAccessServiceToken {
+            account_id: "test-account",
+            token_id: "token-to-update",
+            params: update_params,
+        };
+
+        assert_eq!(update_token.method(), Method::PUT);
+        assert_eq!(
+            update_token.path(),
+            "accounts/test-account/access/service_tokens/token-to-update"
+        );
+        assert!(update_token.body().is_some());
+    }
+
+    #[test]
+    fn test_update_params_serialization() {
+        let app_params = UpdateAccessApplicationParams {
+            name: Some("Serialization Test Update".to_string()),
+            domain: Some("updated-serialize.example.com".to_string()),
+            session_duration: Some("6h".to_string()),
+            auto_redirect_to_identity: Some(false),
+            allowed_idps: None,
+            cors_headers: None,
+            custom_deny_message: None,
+            custom_deny_url: None,
+            tags: None,
+            logo_url: None,
+            skip_interstitial: None,
+        };
+
+        let json = serde_json::to_string(&app_params).unwrap();
+        let deserialized: UpdateAccessApplicationParams = serde_json::from_str(&json).unwrap();
+        assert_eq!(app_params, deserialized);
+
+        let policy_params = UpdateAccessPolicyParams {
+            name: Some("Updated Policy Serialization Test".to_string()),
+            decision: Some(PolicyDecision::Deny),
+            include: None,
+            exclude: None,
+            require: None,
+            approval_groups: None,
+            session_duration: Some("4h".to_string()),
+        };
+
+        let policy_json = serde_json::to_string(&policy_params).unwrap();
+        let policy_deserialized: UpdateAccessPolicyParams =
+            serde_json::from_str(&policy_json).unwrap();
+        assert_eq!(policy_params, policy_deserialized);
+
+        let token_params = UpdateServiceTokenParams {
+            name: Some("Updated Token Name".to_string()),
+            duration: Some("7d".to_string()),
+        };
+
+        let token_json = serde_json::to_string(&token_params).unwrap();
+        let token_deserialized: UpdateServiceTokenParams =
+            serde_json::from_str(&token_json).unwrap();
+        assert_eq!(token_params, token_deserialized);
+    }
+
+    #[test]
+    fn test_access_user_serialization() {
+        let user = AccessUser {
+            id: "user-123".to_string(),
+            email: "test@example.com".to_string(),
+            name: Some("Test User".to_string()),
+            created_at: Some("2023-01-01T00:00:00Z".parse::<DateTime<Utc>>().unwrap()),
+            updated_at: Some("2023-01-02T00:00:00Z".parse::<DateTime<Utc>>().unwrap()),
+            last_successful_login: Some("2023-01-03T00:00:00Z".parse::<DateTime<Utc>>().unwrap()),
+        };
+
+        let json = serde_json::to_string(&user).unwrap();
+        let deserialized: AccessUser = serde_json::from_str(&json).unwrap();
+        assert_eq!(user, deserialized);
+        assert_eq!(user.email, "test@example.com");
+        assert_eq!(user.name, Some("Test User".to_string()));
     }
 }

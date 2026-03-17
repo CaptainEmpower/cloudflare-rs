@@ -109,7 +109,7 @@ mod tests {
 
         let result: D1QueryResult = serde_json::from_str(json).unwrap();
         assert_eq!(result.results.len(), 2);
-        assert_eq!(result.success, true);
+        assert!(result.success);
         assert_eq!(result.meta.served_by_region, Some("WEUR".to_string()));
         assert_eq!(result.meta.duration, Some(15.5));
         assert_eq!(result.meta.rows_read, Some(2.0));
@@ -180,7 +180,7 @@ mod tests {
         let result: D1RawQueryResult = serde_json::from_str(json).unwrap();
         assert_eq!(result.results.columns, vec!["id", "name"]);
         assert_eq!(result.results.rows.len(), 2);
-        assert_eq!(result.success, true);
+        assert!(result.success);
         assert_eq!(result.meta.served_by_region, Some("EEUR".to_string()));
         assert_eq!(result.meta.duration, Some(12.3));
         assert_eq!(result.meta.served_by_primary, Some(true));
