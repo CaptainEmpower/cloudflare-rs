@@ -3,7 +3,7 @@ use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 
 /// Access Application
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/>
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct AccessApplication {
     /// Application identifier
@@ -79,7 +79,7 @@ pub struct CorsHeaders {
 }
 
 /// Access Policy
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/>
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct AccessPolicy {
     /// Policy identifier

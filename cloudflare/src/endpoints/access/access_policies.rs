@@ -6,7 +6,7 @@ use super::access_data_structures::{
 };
 
 /// List Access policies for an application
-/// https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/list/
+/// <https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/list/>
 #[derive(Debug)]
 pub struct ListAccessPolicies<'a> {
     /// Account or zone identifier
