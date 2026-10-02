@@ -106,7 +106,7 @@ pub struct WorkerObservability {
 pub enum WorkerBinding {
     /// Plain text binding
     PlainText { name: String, text: String },
-    /// JSON binding  
+    /// JSON binding
     Json {
         name: String,
         json: serde_json::Value,
@@ -198,7 +198,7 @@ pub struct WorkerScriptResponse {
     pub success: Option<bool>,
     /// Error messages
     pub errors: Option<Vec<String>>,
-    /// Warning messages  
+    /// Warning messages
     pub messages: Option<Vec<String>>,
 }
 
@@ -219,7 +219,7 @@ pub struct WorkerScriptUploadRequest {
 pub struct WorkerModuleUpload {
     /// Module name
     pub name: String,
-    /// Module content (base64 encoded)  
+    /// Module content (base64 encoded)
     pub content: String,
     /// Content type
     #[serde(rename = "type")]

@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod tests {
     use crate::endpoints::d1::{
-        CreateDatabaseParams, QueryDatabaseParams, RawQueryParams, 
+        CreateDatabaseParams, QueryDatabaseParams, RawQueryParams,
         D1Database, D1QueryResult, D1RawQueryResult, D1PrimaryLocationHint,
         UpdateDatabaseParams, UpdatePartialDatabaseParams, ExportDatabaseParams,
         ImportDatabaseParams, D1ReadReplicationMode
@@ -12,7 +12,7 @@ mod tests {
         let params = CreateDatabaseParams::new("test-db".to_string());
         assert_eq!(params.name, "test-db");
         assert_eq!(params.primary_location_hint, None);
-        
+
         let json = serde_json::to_string(&params).unwrap();
         let expected = r#"{"name":"test-db"}"#;
         assert_eq!(json, expected);
@@ -26,7 +26,7 @@ mod tests {
         );
         assert_eq!(params.name, "test-db");
         assert_eq!(params.primary_location_hint, Some(D1PrimaryLocationHint::Weur));
-        
+
         let json = serde_json::to_string(&params).unwrap();
         let expected = r#"{"name":"test-db","primary_location_hint":"weur"}"#;
         assert_eq!(json, expected);
@@ -50,7 +50,7 @@ mod tests {
     fn test_raw_query_params() {
         let params = RawQueryParams::new("CREATE TABLE users (id INTEGER PRIMARY KEY)".to_string());
         assert_eq!(params.sql, "CREATE TABLE users (id INTEGER PRIMARY KEY)");
-        
+
         let json = serde_json::to_string(&params).unwrap();
         let expected = r#"{"sql":"CREATE TABLE users (id INTEGER PRIMARY KEY)"}"#;
         assert_eq!(json, expected);
@@ -118,7 +118,7 @@ mod tests {
     #[test]
     fn test_update_database_params() {
         let params = UpdateDatabaseParams::new(D1ReadReplicationMode::Auto);
-        
+
         let json = serde_json::to_string(&params).unwrap();
         let expected = r#"{"read_replication":{"mode":"auto"}}"#;
         assert_eq!(json, expected);
@@ -128,7 +128,7 @@ mod tests {
     fn test_update_partial_database_params() {
         let params = UpdatePartialDatabaseParams::new();
         assert!(params.read_replication.is_none());
-        
+
         let json = serde_json::to_string(&params).unwrap();
         let expected = r#"{}"#;
         assert_eq!(json, expected);
@@ -138,10 +138,10 @@ mod tests {
     fn test_export_database_params() {
         let params = ExportDatabaseParams::new();
         assert!(params.format.is_none());
-        
+
         let params_with_format = ExportDatabaseParams::with_format("sql".to_string());
         assert_eq!(params_with_format.format, Some("sql".to_string()));
-        
+
         let json = serde_json::to_string(&params_with_format).unwrap();
         let expected = r#"{"format":"sql"}"#;
         assert_eq!(json, expected);
@@ -152,7 +152,7 @@ mod tests {
         let params = ImportDatabaseParams::with_sql("CREATE TABLE test (id INTEGER);".to_string());
         assert_eq!(params.sql, Some("CREATE TABLE test (id INTEGER);".to_string()));
         assert!(params.file_name.is_none());
-        
+
         let json = serde_json::to_string(&params).unwrap();
         let expected = r#"{"sql":"CREATE TABLE test (id INTEGER);"}"#;
         assert_eq!(json, expected);

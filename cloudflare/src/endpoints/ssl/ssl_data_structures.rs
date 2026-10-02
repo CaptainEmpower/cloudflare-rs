@@ -51,7 +51,7 @@ pub struct CreateOriginCaCertificateParams {
 pub enum CertificateRequestType {
     /// RSA signature type
     OriginRsa,
-    /// ECC signature type  
+    /// ECC signature type
     OriginEcc,
     /// Keyless certificate for Keyless SSL servers
     KeylessCertificate,

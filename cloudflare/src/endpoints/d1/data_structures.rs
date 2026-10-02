@@ -13,7 +13,7 @@ use std::collections::HashMap;
 pub enum D1PrimaryLocationHint {
     /// Western North America
     Wnam,
-    /// Eastern North America  
+    /// Eastern North America
     Enam,
     /// Western Europe
     Weur,

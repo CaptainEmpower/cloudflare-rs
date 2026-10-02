@@ -49,7 +49,7 @@ pub struct AccessApplication {
 pub enum ApplicationType {
     /// Self-hosted application
     SelfHosted,
-    /// SSH application  
+    /// SSH application
     Ssh,
     /// VNC application
     Vnc,

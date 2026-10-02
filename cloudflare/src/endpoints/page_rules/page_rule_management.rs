@@ -13,7 +13,7 @@ pub struct ListPageRules<'a> {
     pub status: Option<&'a str>,
     /// Order results (status, priority)
     pub order: Option<&'a str>,
-    /// Direction to order results (asc, desc)  
+    /// Direction to order results (asc, desc)
     pub direction: Option<&'a str>,
     /// Match type for filtering (all, any)
     pub match_type: Option<&'a str>,
